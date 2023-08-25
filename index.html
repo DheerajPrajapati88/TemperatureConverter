@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>temperature converter</title>
+	
+</head>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		font-family: sans-serif;
+	}
+   html,body{
+    width: 100%;
+    height: 100%;
+   }
+   .main{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+   }
+   h1{
+   	font-size: 4vw;
+	padding: 2vw;
+   }
+   #container{
+   	text-align: center;
+	background: linear-gradient(to left, #000428,#004e92);
+   	padding: 4vw;
+	border-radius: 0.5vw;
+   }
+   .input{
+   	display: inline-block;
+	outline: none;
+	border: 0;
+   }
+   input{
+	outline: none;
+	border: 0;
+   }
+   input:focus
+	{
+		box-shadow: 0px 0px 0px 5px darkgray;
+	} 
+   .inpClass{
+   	padding: 1vw 1vw;
+   	margin: 1vw;
+   	font-size: 2vw;
+   	font-weight: bold;
+   	text-align: center;
+	border-radius: 0.5vw;
+
+   }
+   label{
+   	font-size: 2.5vw;
+   	font-weight: bold;
+	color: #fff;
+   }
+   h1 span{
+	background: linear-gradient(to left, #000428,#004e92);
+	-webkit-background-clip: text;
+	color: transparent;
+	font-size: 2vw;
+   }
+   h1 #t{
+	background: linear-gradient(to left, #000428,#004e92);
+	-webkit-background-clip: text;
+	color: transparent;
+	font-size: 5vw;
+   }
+@media(max-width:425px){
+
+	#container{
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		padding: 10vw 0;
+		gap: 2.5vw;
+		
+	}
+	h1{
+		font-size: 6vw;
+	}
+	h1 #t{
+		font-size: 10vw;		
+	}
+	h1 #c{
+		font-size: 4vw;
+
+	}
+	.input label{
+
+		font-size: 3.5vw;
+	}
+	input{
+		width: 50%;
+		border: 0;
+		outline: none;
+	}
+	input[type="number"]{
+		
+		font-size: 4vw;
+	}
+	input:focus
+	{
+		box-shadow: 0px 0px 0px 3px darkgray;
+	} 
+}
+
+</style>
+    
+  <body>
+	<div class="main">
+		<h1><span id="t">T</span>emperature<span id="c">Converter</span></h1>
+		<div id="container">
+			<div class="input">
+				<label>Celsius</label>
+				<br>
+				<input type="number" name="" value="0" id="cel" class="inpClass">
+			</div>
+			<div class="input">
+				<label>Fahrenheit</label>
+				<br>
+				<input type="number" name="" value="0" id="fah" class="inpClass">
+			</div>
+		</div>
+	</div>
+    <script>
+        var cel=document.getElementById('cel');
+        var fah=document.getElementById('fah');
+        cel.addEventListener('input',function(){
+        	let c=this.value;
+        	let f=(c*9/5)+32;
+        	if(!Number.isInteger(f)){
+        		f=f.toFixed(4);
+        	}
+        	fah.value=f;
+
+        })
+        fah.addEventListener('input',function(){
+        	let f=this.value;
+        	let c=(f-32)*5/9;
+        	if(!Number.isInteger(c)){
+        		c=c.toFixed(4);
+        	}
+        	cel.value=c;
+        })
+    </script>
+</body>
+</html>
